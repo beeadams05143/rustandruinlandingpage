@@ -8,7 +8,7 @@ images/Toddwig.jpeg
 images/Cheshire Fair.png
 images/bumpersticker.png
 images/camping1.jpeg
-images/whitetrash.jpg
+images/jenny.JPG
 images/theguys.JPG
 images/Joshcutie.jpg
 images/duo-beth-josh.jpg
