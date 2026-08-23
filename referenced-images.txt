@@ -21,7 +21,7 @@ images/member-gary.png
 images/member-jenny.png
 images/member-josh.jpg
 images/member-todd.jpg
-images/pamjpeg.jpeg
+images/whitetrash.jpg
 images/poster2.png
 images/poster3.png
 images/thebandsunset.png
