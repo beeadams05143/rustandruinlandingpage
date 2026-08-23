@@ -389,9 +389,11 @@
 
     .music-showcase {
       display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1fr);
       gap: 28px;
       align-items: stretch;
+      max-width: 920px;
+      margin: 0 auto;
     }
 
     .music-card,
@@ -1064,7 +1066,7 @@
         <div class="nav-links">
           <a href="#home">Home</a>
           <a href="#shows">Shows</a>
-          <a href="#music">Original Music</a>
+          <a href="#music">Music</a>
           <a href="#media">Media</a>
           <a href="#band">Band</a>
           <a href="#merch">Merch</a>
@@ -1121,26 +1123,10 @@
 
       <section class="section" id="music">
         <div class="section-heading">
-          <h2>Original Music</h2>
-          <p>Rust &amp; Ruin on Spotify: originals, favorites, harmonies, and retro soul.</p>
+          <h2>The Sound of Rust and Ruin</h2>
+          <p>Rust and Ruin on Spotify: originals, favorite covers, and retro tunes.</p>
         </div>
         <div class="music-showcase">
-          <article class="music-card">
-            <figure class="artist-artwork">
-              <img src="images/logo.png" alt="Rust and Ruin artist artwork" />
-            </figure>
-            <h3>Featured Originals</h3>
-            <p>Warm harmonies, road-worn guitars, retro soul, and Rust &amp; Ruin originals.</p>
-            <ul class="song-list">
-              <li>Winds of Mars</li>
-              <li>Reckless Abandon</li>
-              <li>Queen of Hearts</li>
-              <li>Heartache Tonight</li>
-              <li>Friday Eve</li>
-            </ul>
-            <a class="glow-button" href="https://open.spotify.com/artist/2Xb6DtUx31j577H7E8z6An?si=tURiPM26SMaivzRrPUJ78Q&nd=1&dlsi=e396e29e0b214ce3" target="_blank" rel="noopener">Open Spotify</a>
-          </article>
-
           <article class="spotify-player-card">
             <h3>Listen Now</h3>
             <iframe
