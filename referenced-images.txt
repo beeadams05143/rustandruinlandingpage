@@ -9,7 +9,7 @@ images/Cheshire Fair.png
 images/bumpersticker.png
 images/camping1.jpeg
 images/camping2.jpeg
-images/danbehindthekit.jpg
+images/theguys.JPG
 images/Joshcutie.jpg
 images/duo-beth-josh.jpg
 images/duo-josh-beth.jpg
