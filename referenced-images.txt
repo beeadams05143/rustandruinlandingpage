@@ -7,8 +7,8 @@ images/Tees.jpg
 images/Toddwig.jpeg
 images/Cheshire Fair.png
 images/bumpersticker.png
-images/jenny.JPG
-images/jenny.JPG
+images/whitetrash.jpeg
+images/whitetrash.jpeg
 images/theguys.JPG
 images/Joshcutie.jpg
 images/duo-beth-josh.jpg
@@ -21,7 +21,7 @@ images/member-gary.png
 images/member-jenny.png
 images/member-josh.jpg
 images/member-todd.jpg
-images/whitetrash.jpg
+images/whitetrash.jpeg
 images/poster2.png
 images/poster3.png
 images/thebandsunset.png
