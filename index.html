@@ -234,6 +234,14 @@
       text-shadow: var(--glow-teal);
     }
 
+    .glow-button:disabled,
+    button.glow-button:disabled {
+      cursor: not-allowed;
+      opacity: .68;
+      transform: none;
+      filter: grayscale(.18);
+    }
+
     .section-heading {
       display: grid;
       gap: 12px;
@@ -484,6 +492,55 @@
       transform: translateX(4px);
       border-color: rgba(255, 194, 28, .52);
       box-shadow: 0 0 14px rgba(255, 138, 42, .32);
+    }
+
+    .press-kit-grid {
+      align-items: stretch;
+    }
+
+    .press-kit-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 28px;
+    }
+
+    .press-kit-card h3 {
+      margin: 0;
+      color: var(--yellow);
+      font-size: clamp(1.55rem, 3vw, 2.35rem);
+      line-height: 1;
+      text-shadow: var(--glow-gold);
+    }
+
+    .download-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+    }
+
+    .download-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px;
+      border: 1px solid rgba(169, 246, 255, .14);
+      border-radius: 18px;
+      background: rgba(0, 0, 0, .34);
+    }
+
+    .download-name {
+      color: var(--cream);
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .download-item .glow-button {
+      min-height: 42px;
+      padding: 10px 16px;
+      font-size: .78rem;
+      white-space: nowrap;
     }
 
     .spotify-embed {
@@ -1049,6 +1106,7 @@
       .button-row,
       .tip-buttons,
       .social-links { align-items: stretch; flex-direction: column; }
+      .download-item { align-items: stretch; flex-direction: column; }
       .glow-button,
       button.glow-button { width: 100%; }
       .calendar-shell { padding: 18px; }
@@ -1070,6 +1128,7 @@
           <a href="#media">Media</a>
           <a href="#band">Band</a>
           <a href="#merch">Merch</a>
+          <a href="#press-kit">Press Kit</a>
           <a href="#contact">Contact</a>
         </div>
       </div>
@@ -1309,6 +1368,75 @@
             <p>Send a little love after the show. Tips go through Venmo.</p>
             <div class="tip-buttons">
               <a class="glow-button secondary" href="https://venmo.com/u/BethAdams-RustandRuin" target="_blank" rel="noopener">Venmo</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="press-kit">
+        <div class="section-heading">
+          <h2>Rust and Ruin Downloads</h2>
+          <p>Download approved promotional materials and information for Rust and Ruin.</p>
+        </div>
+        <!-- Future download files should be placed in /press-kit/ and connected by replacing each disabled button with a download link. -->
+        <div class="grid two-col press-kit-grid">
+          <article class="glow-card press-kit-card">
+            <h3>Band Information</h3>
+            <div class="download-list">
+              <div class="download-item" data-file="press-kit/rust-and-ruin-band-bio.pdf">
+                <span class="download-name">Band Bio</span>
+                <button class="glow-button secondary" type="button" disabled>Coming Soon</button>
+              </div>
+              <div class="download-item" data-file="press-kit/rust-and-ruin-short-description.pdf">
+                <span class="download-name">Short Band Description</span>
+                <button class="glow-button secondary" type="button" disabled>Coming Soon</button>
+              </div>
+              <div class="download-item" data-file="press-kit/rust-and-ruin-sample-setlist.pdf">
+                <span class="download-name">Sample Setlist</span>
+                <button class="glow-button secondary" type="button" disabled>Coming Soon</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="glow-card press-kit-card">
+            <h3>Photos &amp; Logos</h3>
+            <div class="download-list">
+              <div class="download-item" data-file="press-kit/rust-and-ruin-full-band-photo.jpg">
+                <span class="download-name">Full-Band Photo</span>
+                <button class="glow-button secondary" type="button" disabled>Coming Soon</button>
+              </div>
+              <div class="download-item" data-file="press-kit/rust-and-ruin-duo-photo.jpg">
+                <span class="download-name">Duo Photo</span>
+                <button class="glow-button secondary" type="button" disabled>Coming Soon</button>
+              </div>
+              <div class="download-item" data-file="press-kit/rust-and-ruin-logo.png">
+                <span class="download-name">Rust and Ruin Logo</span>
+                <button class="glow-button secondary" type="button" disabled>Coming Soon</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="glow-card press-kit-card">
+            <h3>Venue Information</h3>
+            <div class="download-list">
+              <div class="download-item" data-file="press-kit/rust-and-ruin-stage-plot.pdf">
+                <span class="download-name">Stage Plot</span>
+                <button class="glow-button secondary" type="button" disabled>Coming Soon</button>
+              </div>
+              <div class="download-item" data-file="press-kit/rust-and-ruin-technical-requirements.pdf">
+                <span class="download-name">Technical Requirements</span>
+                <button class="glow-button secondary" type="button" disabled>Coming Soon</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="glow-card press-kit-card">
+            <h3>Complete Press Kit</h3>
+            <div class="download-list">
+              <div class="download-item" data-file="press-kit/rust-and-ruin-complete-press-kit.zip">
+                <span class="download-name">Complete Press Kit</span>
+                <button class="glow-button secondary" type="button" disabled>Coming Soon</button>
+              </div>
             </div>
           </article>
         </div>
