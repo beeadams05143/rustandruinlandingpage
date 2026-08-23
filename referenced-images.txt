@@ -5,7 +5,7 @@ images/Rustandruinrecordsticker.png
 images/SmallTownsandSummerNightsRoad Trip.png
 images/Tees.jpg
 images/Toddwig.jpeg
-images/allofuscampingJPEG.jpg
+images/Cheshire Fair.png
 images/bumpersticker.png
 images/camping1.jpeg
 images/camping2.jpeg
