@@ -10,7 +10,7 @@ images/bumpersticker.png
 images/camping1.jpeg
 images/camping2.jpeg
 images/danbehindthekit.jpg
-images/dansanta.jpg
+images/Joshcutie.jpg
 images/duo-beth-josh.jpg
 images/duo-josh-beth.jpg
 images/logo.png
