@@ -7,7 +7,7 @@ images/Tees.jpg
 images/Toddwig.jpeg
 images/Cheshire Fair.png
 images/bumpersticker.png
-images/camping1.jpeg
+images/jenny.JPG
 images/jenny.JPG
 images/theguys.JPG
 images/Joshcutie.jpg
