@@ -543,6 +543,79 @@
       white-space: nowrap;
     }
 
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, .74);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-backdrop.is-hidden {
+      display: none;
+    }
+
+    .press-kit-modal {
+      width: min(720px, 100%);
+      max-height: min(82vh, 760px);
+      display: grid;
+      gap: 18px;
+      padding: clamp(22px, 4vw, 34px);
+      overflow: auto;
+    }
+
+    .modal-topline {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .press-kit-modal h3 {
+      margin: 0;
+      color: var(--yellow);
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      line-height: 1;
+      text-shadow: var(--glow-gold);
+    }
+
+    .modal-close {
+      width: 44px;
+      min-height: 44px;
+      padding: 0;
+      flex: 0 0 auto;
+    }
+
+    .modal-copy {
+      margin: 0;
+      padding: 18px;
+      border: 1px solid rgba(169, 246, 255, .16);
+      border-radius: 18px;
+      color: var(--cream);
+      background: rgba(0, 0, 0, .42);
+      font-size: 1.08rem;
+      font-weight: 700;
+      line-height: 1.65;
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .copy-status {
+      min-height: 22px;
+      margin: 0;
+      color: var(--yellow);
+      font-weight: 900;
+      text-shadow: var(--glow-gold);
+    }
+
     .spotify-embed {
       position: relative;
       z-index: 1;
@@ -1105,7 +1178,8 @@
       .duo-card { padding: 20px; }
       .button-row,
       .tip-buttons,
-      .social-links { align-items: stretch; flex-direction: column; }
+      .social-links,
+      .modal-actions { align-items: stretch; flex-direction: column; }
       .download-item { align-items: stretch; flex-direction: column; }
       .glow-button,
       button.glow-button { width: 100%; }
@@ -1378,7 +1452,7 @@
           <h2>Rust and Ruin Downloads</h2>
           <p>Download approved promotional materials and information for Rust and Ruin.</p>
         </div>
-        <!-- Future download files should be placed in /press-kit/ and connected by replacing each disabled button with a download link. -->
+        <!-- Future files belong in /press-kit/. Text materials should open in this modal pattern; photos, logos, PDFs, and zip files should open in a new tab. -->
         <div class="grid two-col press-kit-grid">
           <article class="glow-card press-kit-card">
             <h3>Band Information</h3>
@@ -1389,7 +1463,7 @@
               </div>
               <div class="download-item" data-file="press-kit/rust-and-ruin-short-band-description.txt">
                 <span class="download-name">Short Band Description</span>
-                <a class="glow-button secondary" href="press-kit/rust-and-ruin-short-band-description.txt" download>Download</a>
+                <button class="glow-button secondary" type="button" data-open-text-modal="short-band-description">View &amp; Copy</button>
               </div>
               <div class="download-item" data-file="press-kit/rust-and-ruin-sample-setlist.pdf">
                 <span class="download-name">Sample Setlist</span>
@@ -1441,6 +1515,21 @@
           </article>
         </div>
       </section>
+
+      <div class="modal-backdrop is-hidden" id="pressKitTextModal" role="presentation">
+        <article class="glow-card press-kit-modal" role="dialog" aria-modal="true" aria-labelledby="pressKitModalTitle" aria-describedby="pressKitModalText" tabindex="-1">
+          <div class="modal-topline">
+            <h3 id="pressKitModalTitle">Short Band Description</h3>
+            <button class="glow-button secondary modal-close" type="button" id="pressKitModalClose" aria-label="Close press kit text">X</button>
+          </div>
+          <p class="modal-copy" id="pressKitModalText">Rust and Ruin brings the sound and spirit of the 1970s to life with powerful vocals, rich harmonies, and an energetic mix of classic rock, country rock, and unforgettable favorites. Based in Southern Vermont, Rust and Ruin performs as a full band or acoustic duo and also offers themed shows that deliver the feel of a tribute experience while celebrating the music of an entire era rather than a single artist. Every show is built around authentic live music, audience connection, and a great night out.</p>
+          <div class="modal-actions">
+            <button class="glow-button" type="button" id="copyPressKitText">Copy Text</button>
+            <a class="glow-button secondary" href="press-kit/rust-and-ruin-short-band-description.txt" download>Download</a>
+            <p class="copy-status" id="copyStatus" aria-live="polite"></p>
+          </div>
+        </article>
+      </div>
 
       <section class="section" id="contact">
         <div class="grid two-col">
@@ -1688,6 +1777,65 @@
     });
 
     renderShows();
+
+    const pressKitModal = document.getElementById("pressKitTextModal");
+    const pressKitDialog = pressKitModal.querySelector("[role='dialog']");
+    const pressKitModalClose = document.getElementById("pressKitModalClose");
+    const copyPressKitText = document.getElementById("copyPressKitText");
+    const pressKitModalText = document.getElementById("pressKitModalText");
+    const copyStatus = document.getElementById("copyStatus");
+    let lastModalTrigger = null;
+
+    function openPressKitModal(trigger) {
+      lastModalTrigger = trigger;
+      copyStatus.textContent = "";
+      pressKitModal.classList.remove("is-hidden");
+      pressKitDialog.focus();
+    }
+
+    function closePressKitModal() {
+      pressKitModal.classList.add("is-hidden");
+      copyStatus.textContent = "";
+      if (lastModalTrigger) {
+        lastModalTrigger.focus();
+      }
+    }
+
+    document.querySelectorAll("[data-open-text-modal]").forEach((button) => {
+      button.addEventListener("click", () => openPressKitModal(button));
+    });
+
+    pressKitModalClose.addEventListener("click", closePressKitModal);
+
+    pressKitModal.addEventListener("click", (event) => {
+      if (event.target === pressKitModal) {
+        closePressKitModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !pressKitModal.classList.contains("is-hidden")) {
+        closePressKitModal();
+      }
+    });
+
+    copyPressKitText.addEventListener("click", async () => {
+      const text = pressKitModalText.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (error) {
+        const helper = document.createElement("textarea");
+        helper.value = text;
+        helper.setAttribute("readonly", "");
+        helper.style.position = "fixed";
+        helper.style.opacity = "0";
+        document.body.append(helper);
+        helper.select();
+        document.execCommand("copy");
+        helper.remove();
+      }
+      copyStatus.textContent = "Copied!";
+    });
 
     const members = [
       {
