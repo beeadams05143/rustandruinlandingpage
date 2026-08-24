@@ -596,9 +596,11 @@
       border-radius: 18px;
       color: var(--cream);
       background: rgba(0, 0, 0, .42);
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 1.08rem;
       font-weight: 700;
       line-height: 1.65;
+      white-space: pre-wrap;
     }
 
     .modal-actions {
@@ -1457,17 +1459,17 @@
           <article class="glow-card press-kit-card">
             <h3>Band Information</h3>
             <div class="download-list">
-              <div class="download-item" data-file="press-kit/rust-and-ruin-band-bio.pdf">
+              <div class="download-item" data-file="press-kit/rust-and-ruin-band-bio.txt">
                 <span class="download-name">Band Bio</span>
-                <button class="glow-button secondary" type="button" disabled>Coming Soon</button>
+                <button class="glow-button secondary" type="button" data-open-text-modal="band-bio" data-text-title="Band Bio" data-text-file="press-kit/rust-and-ruin-band-bio.txt">View &amp; Copy</button>
               </div>
               <div class="download-item" data-file="press-kit/rust-and-ruin-short-band-description.txt">
                 <span class="download-name">Short Band Description</span>
-                <button class="glow-button secondary" type="button" data-open-text-modal="short-band-description">View &amp; Copy</button>
+                <button class="glow-button secondary" type="button" data-open-text-modal="short-band-description" data-text-title="Short Band Description" data-text-file="press-kit/rust-and-ruin-short-band-description.txt">View &amp; Copy</button>
               </div>
-              <div class="download-item" data-file="images/Rust%20and%20Ruin%20Sample%20Setlist.jpg">
+              <div class="download-item" data-file="images/Rust%20and%20Ruin%20Sample%20Setlist.pdf">
                 <span class="download-name">Sample Setlist</span>
-                <a class="glow-button secondary" href="images/Rust%20and%20Ruin%20Sample%20Setlist.jpg" target="_blank" rel="noopener">View / Download</a>
+                <a class="glow-button secondary" href="images/Rust%20and%20Ruin%20Sample%20Setlist.pdf" target="_blank" rel="noopener">View / Download</a>
               </div>
             </div>
           </article>
@@ -1518,10 +1520,10 @@
             <h3 id="pressKitModalTitle">Short Band Description</h3>
             <button class="glow-button secondary modal-close" type="button" id="pressKitModalClose" aria-label="Close press kit text">X</button>
           </div>
-          <p class="modal-copy" id="pressKitModalText">Rust and Ruin brings the sound and spirit of the 1970s to life with powerful vocals, rich harmonies, and an energetic mix of classic rock, country rock, and unforgettable favorites. Based in Southern Vermont, Rust and Ruin performs as a full band or acoustic duo and also offers themed shows that deliver the feel of a tribute experience while celebrating the music of an entire era rather than a single artist. Every show is built around authentic live music, audience connection, and a great night out.</p>
+          <pre class="modal-copy" id="pressKitModalText">Rust and Ruin brings the sound and spirit of the 1970s to life with powerful vocals, rich harmonies, and an energetic mix of classic rock, country rock, and unforgettable favorites. Based in Southern Vermont, Rust and Ruin performs as a full band or acoustic duo and also offers themed shows that deliver the feel of a tribute experience while celebrating the music of an entire era rather than a single artist. Every show is built around authentic live music, audience connection, and a great night out.</pre>
           <div class="modal-actions">
             <button class="glow-button" type="button" id="copyPressKitText">Copy Text</button>
-            <a class="glow-button secondary" href="press-kit/rust-and-ruin-short-band-description.txt" download>Download</a>
+            <a class="glow-button secondary" href="press-kit/rust-and-ruin-short-band-description.txt" id="downloadPressKitText" download>Download</a>
             <p class="copy-status" id="copyStatus" aria-live="polite"></p>
           </div>
         </article>
@@ -1777,16 +1779,31 @@
     const pressKitModal = document.getElementById("pressKitTextModal");
     const pressKitDialog = pressKitModal.querySelector("[role='dialog']");
     const pressKitModalClose = document.getElementById("pressKitModalClose");
+    const pressKitModalTitle = document.getElementById("pressKitModalTitle");
     const copyPressKitText = document.getElementById("copyPressKitText");
     const pressKitModalText = document.getElementById("pressKitModalText");
+    const downloadPressKitText = document.getElementById("downloadPressKitText");
     const copyStatus = document.getElementById("copyStatus");
     let lastModalTrigger = null;
 
-    function openPressKitModal(trigger) {
+    async function openPressKitModal(trigger) {
       lastModalTrigger = trigger;
+      const textFile = trigger.dataset.textFile;
+      pressKitModalTitle.textContent = trigger.dataset.textTitle || "Press Kit Text";
+      pressKitModalText.textContent = "Loading...";
+      downloadPressKitText.href = textFile;
       copyStatus.textContent = "";
       pressKitModal.classList.remove("is-hidden");
       pressKitDialog.focus();
+      try {
+        const response = await fetch(textFile);
+        if (!response.ok) {
+          throw new Error("Text file unavailable");
+        }
+        pressKitModalText.textContent = await response.text();
+      } catch (error) {
+        pressKitModalText.textContent = "This text is not available right now.";
+      }
     }
 
     function closePressKitModal() {
