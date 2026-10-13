@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="site-version" content="2026-10-13-moose-show-fix" />
+  <meta name="site-version" content="2026-10-13-video-thumbnails" />
   <title>Rust &amp; Ruin | That 70's Retro Band</title>
   <style>
     :root {
@@ -787,7 +787,13 @@
       aspect-ratio: 16 / 9;
       border-radius: 16px;
       background: #050505;
+      border: 1px solid rgba(169, 246, 255, .28);
       box-shadow: var(--glow-teal);
+    }
+
+    .video-player {
+      display: block;
+      object-fit: cover;
     }
 
     .video-link {
@@ -795,7 +801,6 @@
       display: grid;
       place-items: center;
       overflow: hidden;
-      border: 1px solid rgba(169, 246, 255, .28);
     }
 
     .video-link img {
@@ -1315,66 +1320,39 @@
         <div class="videos-grid" id="videos">
           <article class="glow-card video-card">
             <h3>Full Band Video Eastbound and Down</h3>
-            <a class="video-link" href="images/videos/EastboundandDownFullband.mov" target="_blank" rel="noopener" aria-label="Open Eastbound and Down video">
-              <img src="images/thebandsunset.png" alt="Rust and Ruin band video poster" />
-              <span aria-hidden="true">&#9654;</span>
-            </a>
+            <video class="video-player" controls preload="metadata" src="images/videos/EastboundandDownFullband.mov" aria-label="Full Band Video Eastbound and Down"></video>
           </article>
           <article class="glow-card video-card">
             <h3>Full Band Squeezebox</h3>
-            <a class="video-link" href="images/videos/Squeezeboxfullband.MP4" target="_blank" rel="noopener" aria-label="Open Squeezebox video">
-              <img src="images/thebandsunset.png" alt="Rust and Ruin band video poster" />
-              <span aria-hidden="true">&#9654;</span>
-            </a>
+            <video class="video-player" controls preload="metadata" src="images/videos/Squeezeboxfullband.MP4" aria-label="Full Band Squeezebox"></video>
           </article>
           <article class="glow-card video-card">
             <h3>Full Band Bad Moon Risin</h3>
-            <a class="video-link" href="images/videos/fullbandbadmoonrisin.mov" target="_blank" rel="noopener" aria-label="Open Bad Moon Risin video">
-              <img src="images/thebandsunset.png" alt="Rust and Ruin band video poster" />
-              <span aria-hidden="true">&#9654;</span>
-            </a>
+            <video class="video-player" controls preload="metadata" src="images/videos/fullbandbadmoonrisin.mov" aria-label="Full Band Bad Moon Risin"></video>
           </article>
           <article class="glow-card video-card">
             <h3>Duo Drivin My Life Away</h3>
-            <a class="video-link" href="images/videos/drivin.MOV" target="_blank" rel="noopener" aria-label="Open Drivin my life away video">
-              <img src="images/thebandsunset.png" alt="Rust and Ruin band video poster" />
-              <span aria-hidden="true">&#9654;</span>
-            </a>
+            <video class="video-player" controls preload="metadata" src="images/videos/drivin.MOV" aria-label="Duo Drivin My Life Away"></video>
           </article>
           <article class="glow-card video-card">
             <h3>Full Band 500 Miles at Mike's Tiki Bar</h3>
-            <a class="video-link" href="images/videos/mikes.mp4" target="_blank" rel="noopener" aria-label="Open Mike's Tiki Bar video">
-              <img src="images/thebandsunset.png" alt="Rust and Ruin band video poster" />
-              <span aria-hidden="true">&#9654;</span>
-            </a>
+            <video class="video-player" controls preload="metadata" src="images/videos/mikes.mp4" aria-label="Full Band 500 Miles at Mike's Tiki Bar"></video>
           </article>
           <article class="glow-card video-card">
             <h3>Full Band Behind The Scenes Set Up</h3>
-            <a class="video-link" href="images/videos/setup.MOV" target="_blank" rel="noopener" aria-label="Open Behind The Scenes Set Up video">
-              <img src="images/thebandsunset.png" alt="Rust and Ruin band video poster" />
-              <span aria-hidden="true">&#9654;</span>
-            </a>
+            <video class="video-player" controls preload="metadata" src="images/videos/setup.MOV" aria-label="Full Band Behind The Scenes Set Up"></video>
           </article>
           <article class="glow-card video-card">
             <h3>Full Band Glory Days</h3>
-            <a class="video-link" href="images/videos/glorydays.MOV" target="_blank" rel="noopener" aria-label="Open Glory Days video">
-              <img src="images/thebandsunset.png" alt="Rust and Ruin band video poster" />
-              <span aria-hidden="true">&#9654;</span>
-            </a>
+            <video class="video-player" controls preload="metadata" src="images/videos/glorydays.MOV" aria-label="Full Band Glory Days"></video>
           </article>
           <article class="glow-card video-card">
             <h3>Full Band Rockin' in the Free World</h3>
-            <a class="video-link" href="images/rockininthefree.mp4" target="_blank" rel="noopener" aria-label="Open Rockin' in the Free World video">
-              <img src="images/thebandsunset.png" alt="Rust and Ruin band video poster" />
-              <span aria-hidden="true">&#9654;</span>
-            </a>
+            <video class="video-player" controls preload="metadata" src="images/rockininthefree.mp4" aria-label="Full Band Rockin' in the Free World"></video>
           </article>
           <article class="glow-card video-card">
             <h3>Full Band Travelin' Band</h3>
-            <a class="video-link" href="images/videos/bethmovie.MOV" target="_blank" rel="noopener" aria-label="Open Travelin' Band video">
-              <img src="images/thebandsunset.png" alt="Rust and Ruin band video poster" />
-              <span aria-hidden="true">&#9654;</span>
-            </a>
+            <video class="video-player" controls preload="metadata" src="images/videos/bethmovie.MOV" aria-label="Full Band Travelin' Band"></video>
           </article>
         </div>
       </section>
